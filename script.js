@@ -17,8 +17,15 @@ function makePageForEpisodes(episodeList) {
   
   const rootElem = document.getElementById("root");
   rootElem.innerHTML= "";
-  rootElem.textContent = `Got ${episodeList.length} episode(s)`;
+ const epCount = document.createElement("div");
+ epCount.classList.add("episode_count");
+
+  epCount.textContent = `Got ${episodeList.length} episode(s)`;
+  rootElem.append(epCount);
+
   episodeList.forEach((title) => {
+    const movieCard =document.createElement("div");
+    
     const heading = document.createElement("h1");
     heading.innerText = title.name;
     const image = document.createElement("img");
@@ -28,9 +35,10 @@ function makePageForEpisodes(episodeList) {
     epSeason.innerText = `S${title.season.toString().padStart(2,0)} E${title.number.toString().padStart(2,0)}`;
     // padStrart is to number= 01, parseInt from string to number.
 
-    const summary =document.createElement("div");
+    const summary = document.createElement("div");
     summary.innerText = title.summary;
-    rootElem.append(heading,image,epSeason,summary);
+    movieCard.append(heading,image,epSeason,summary);
+    rootElem.append(movieCard);
 
 //  combine season number and episode number into an episode code:
 
@@ -43,7 +51,7 @@ function makePageForEpisodes(episodeList) {
    });
 }
 
-window.onload = setup;
+window.onload = setup();
 
 function search(input){
   let allInput = allEpisodes.filter(episode =>{
