@@ -3,48 +3,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TV Show Project | My Name Bimbola Lasisi</title>
+    <title>TV Show Project | Bimbola Lasisi</title>
     <link href="style.css" rel="stylesheet" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    
   </head>
-  
+
   <body>
-    <header>
-    <section id="search-content">
-      <div class="search">
-       <input type="search" id="search" name="search" placeholder="Search for episode ">
-       <label for="search-label" id="currentEp">Showing 10 0f 76</label>
+    <h1>Tv Show Project</h1>
+    <div>
+      <!-- search Input -->
+    </div>
+    <input
+      type="text"
+      id="searchInput"
+      title="input search"
+      placeholder="Search for episode"
+    />
+    <div id="searcResult"></div>
+    <br />
+    <!-- Dropdown option -->
+    <label id="select"
+      >Choose an Episode:
+      <select id="listEpisode" name="listed-episode">
+        <option value="text">Select a Episode</option>
+      </select>
+    </label>
+    <br />
 
-      </div>   
-       </section>
+    <div id="root"></div>
+    <div id="container"></div>
 
-<section id ="intro">
-  <h1>Code Your Future TV Show Project</h1>
-  <p>      <a href="https://www.tvmaze.com/" target="_blank" > Sources from TVMAZE <vMaze.com id="source" href="https://www.tvmaze.com/">TVMaze.com </a>
-  </p>
-</section>
-</header>
+    <div id="footer">
+        The data for this project were taken from
+        <a href="https://www.tvmaze.com/api#licensing">TVMaze.com</a>
+      </footer>
+      
+    </div>
+      </p>
+    </div>
 
-    <br>
-    <section id="tv-episode">
-      <div id="root">
-
-    </section>
-
-</main>
-
-         <section id="footer">
-          <a href="https://www.tvmaze.com/" target="_blank" > Come from https://www.tvmaze.com/</a>
-
-         </section>
-
+    <!-- Loads a provided function called getALLshows() which returns all shows -->
+    <script src="shows.js"></script>
 
     <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
     <script src="episodes.js"></script>
 
     <!-- Loads YOUR javascript code -->
     <script src="script.js"></script>
-  </main>
   </body>
 </html>
