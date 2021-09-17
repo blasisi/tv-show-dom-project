@@ -1,5 +1,5 @@
 * {
-  box-sizing: border-box
+  box-sizing: border-box;
 }
 html,
 body {
@@ -13,8 +13,6 @@ body {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
-
-
 /* movie title */
 h1 {
   color: tomato;
@@ -24,8 +22,8 @@ h1 {
   font-size: 20px;
 }
 
-#root{
-width: 100%;
+#root {
+  width: 100%;
   color: black;
   background-color: #fcfcfc;
   font-size: 20px;
@@ -34,7 +32,6 @@ width: 100%;
   grid-template-rows: max-content;
   gap: 5rem;
   background-color: antiquewhite;
-
 }
 /* Media query  */
 /* Mobile version */
@@ -45,8 +42,6 @@ width: 100%;
     grid-template-rows: max-content;
     gap: 5rem;
     background-color: antiquewhite;
-  
-
   }
 
   h1 {
