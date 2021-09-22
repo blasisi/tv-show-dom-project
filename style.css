@@ -3,9 +3,9 @@
 }
 html,
 body {
-  width: 100%;
   margin: 0;
   padding: 0;
+  line-height: 1;
   border: 0px none;
 }
 
@@ -14,13 +14,45 @@ body {
 }
 
 /* movie title */
-h1 {
-  color: tomato;
+header{
   display: flex;
+  background-color: darkolivegreen;
+  height: 80px;
+  justify-content: space-between;
+  padding: 0 1em;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+header .logo img{
+width: 150px;
+height: 66px;
+object-fit: contain;
+}
+
+header h1 {
+  color: tomato;
   margin-top: 0;
   background-color: blueviolet;
-  font-size: 20px;
+  font-size: 40px;
 }
+
+header #searchInput  {
+  width: 100px;
+  background-color: rgb(248, 248, 248);
+  box-sizing: 2px solid #ccc;
+  border-radius: 2px;
+  font-size: 14px;
+  background-position: 10px 10px;
+  background-image: url("");
+  padding: 10px 10px 12px 20px;
+  transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-out;
+  
+  }
+  header #searchInput:focus {
+    width: 100%;
+  }
 
 #root {
   width: 100%;
@@ -33,6 +65,10 @@ h1 {
   gap: 5rem;
   background-color: antiquewhite;
 }
+
+
+
+
 /* Media query  */
 /* Mobile version */
 @media only screen and (min-width: 400px) {

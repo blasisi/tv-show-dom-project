@@ -1,24 +1,47 @@
 //You can edit ALL of the code here
 // Gloval variable
-let dropDown = document.getElementById("listEpisodes");
+// let dropDown = document.getElementById("listEpisodes");
+
 const rootElem = document.getElementById("root");
 
 const container = document.getElementById("container");
 let searchInput = document.getElementById("searchInput");
 let searchResult = document.getElementById("ResultSearch");
-
+const selectShowTag =document.getElementById("selectShow");
 let epCount = 0;
 let allEpisodes = [];
-const apiUrl = "http://api.tvmaze.com/episodes/4956";
+let allShows = getAllShows();
 
-function fetchData(data) {
-  fetch(apiUrl)
+// add a  new drop for list of shows
+// fill it with the dATTA THAT COME FORM GET ALL SHOWS 
+// let allShow = getShow();
+
+const apiEps = "https://api.tvmaze.com/shows/82/episodes";
+
+
+function fetchEpisodes() {
+  fetch(apiEps)
     .then((response) => response.json())
-    .then((data) => {
-      allEpisodes = data;
+      
+    .then((episode) => {
+      allEpisodes = episode;
       setup();
     });
 }
+
+function fetchShows() {
+
+  fetch(" https://api.tvmaze.com/shows")
+    .then((response) => response.json())
+      
+    .then((shows) => {
+      allShows = shows;
+      selectShows(allShows);
+    })
+    
+}
+
+
 
 // fetchData(apiUrl);
 
@@ -110,4 +133,18 @@ function selectDropDown(episodes) {
   });
 }
 
-window.onload = fetchData(apiUrl);
+function selectShows(shows) {
+  let dropDown = document.getElementById("listShows");
+  dropDown.innerHTML = "";
+  shows.forEach((show) => {
+    const option = document.createElement("option");
+    option.value = show.name;
+    option.text = show.name;
+    dropDown.appendChild(option);
+  });
+}
+//level 400 add a show selector
+
+window.onload = fetchEpisodes ( );
+window.onload = fetchShows();
+

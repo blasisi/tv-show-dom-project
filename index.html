@@ -6,32 +6,51 @@
     <title>TV Show Project | Bimbola Lasisi</title>
     <link href="style.css" rel="stylesheet" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
+
   </head>
 
-  <body>
-    <h1>Tv Show Project</h1>
-    <div>
-      <!-- search Input -->
-    </div>
-    <input
+  <header>
+    <h1><img src="logo/logo.png" alt ="logo"/>
+      Tv Show Project
+      <form>
+      <input
+
       type="text"
       id="searchInput"
       title="input search"
-      placeholder="Search for episode"
-    />
+      placeholder="Search for episode"/>    
+
+    </h1>
+    </header>
+  </form>
+  <body>
+      <!-- search Input -->
+    </div>
+   
+
     <div id="searcResult"></div>
-    <br />
-    <!-- Dropdown option -->
+    <br >
+    <!-- getEpisode-->
     <label id="select">
       Choose an Episode:
       <select id="listEpisode" name="listed-episode">
         <!-- option  -->
         <option value="text">Select a Episode</option>
       </select>
-
     </label>
-    <br />
-
+    <br >
+  <br>
+    <!-- get shows-->
+    <label id="select">
+      Choose a show:
+      <select id="listShows" name="listed-shows">
+        <!-- option  -->
+        <option value="text">Select a shows</option>
+      </select>
+    </label>
+<br>
+<br>
     <div id="root"></div>
     <div id="container"></div>
 
@@ -52,5 +71,8 @@
 
     <!-- Loads YOUR javascript code -->
     <script src="script.js"></script>
+    
+    <script> console.dir(document);
+    </script>
   </body>
 </html>
