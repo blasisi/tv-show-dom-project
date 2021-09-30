@@ -17,17 +17,28 @@ body {
 header{
   display: flex;
   background-color: darkolivegreen;
-  height: 80px;
+  height: 100px;
   justify-content: space-between;
   padding: 0 1em;
   width: 100%;
+  box-shadow:  0 0 5px rgb(0, 0, 0,0, 2);
   top: 0;
   left: 0;
+  z-index: 99;
 }
-header .logo img{
+/* section{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  margin: 0;
+} */
+ .logo {
 width: 150px;
-height: 66px;
-object-fit: contain;
+height: 86px;
+margin-left: 20px;
+margin-top: 10px;
 }
 
 header h1 {
@@ -41,11 +52,11 @@ header #searchInput  {
   width: 100px;
   background-color: rgb(248, 248, 248);
   box-sizing: 2px solid #ccc;
-  border-radius: 2px;
+  border-radius: 30px;
   font-size: 14px;
-  background-position: 10px 10px;
+  /* background-position: 10px 10px; */
   background-image: url("");
-  padding: 10px 10px 12px 20px;
+  padding: 0px 10px 2px 10px;
   transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-out;
   
@@ -81,9 +92,11 @@ header #searchInput  {
   }
 
   h1 {
-    color: white;
+    color: purple;
     text-align: left;
     font-family: sans-serif;
+    font-size: 30px;
+    background-color:white;
   }
 
   .image {

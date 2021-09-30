@@ -6,7 +6,7 @@ const rootElem = document.getElementById("root");
 
 const container = document.getElementById("container");
 let searchInput = document.getElementById("searchInput");
-let searchResult = document.getElementById("ResultSearch");
+let searchResult = document.getElementById("searcResult");
 const selectShowTag =document.getElementById("selectShow");
 let epCount = 0;
 let allEpisodes = [];
@@ -19,8 +19,9 @@ let allShows = getAllShows();
 const apiEps = "https://api.tvmaze.com/shows/82/episodes";
 
 
-function fetchEpisodes() {
-  fetch(apiEps)
+function fetchEpisodes(showID =82) {
+
+  fetch(`https://api.tvmaze.com/shows/${showID}/episodes`)
     .then((response) => response.json())
       
     .then((episode) => {
@@ -51,7 +52,7 @@ function setup() {
   selectDropDown(allEpisodes);
 }
 
-// level
+// level 100
 const heading = document.createElement("h1");
 const image = document.createElement("img");
 const epSeason = document.createElement("p");
@@ -89,7 +90,7 @@ function makePageForEpisodes(episodeList) {
 
     // Your page should state somewhere that the data has (originally) come from TVMaze.com, and link back to that site (or the specific episode on that site). See tvmaze.com/api#licensing.
   });
-  //level 300
+  
 }
 
 function search(input) {
@@ -110,16 +111,27 @@ searchInput.addEventListener("input", (event) => {
   searchInput = event.target.value;
   epCount = 0;
   console.log(searchInput);
-  let allEpisode = document.querySelectorAll("#container div");
-  allEpisode.forEach((episode) => {
-    if (episodes.innerHTML.toLowerCase().includes(searchInput.toLowerCase())) {
-      episode.style.display = "block";
-      epCount++;
-    } else {
-      episodes.style.display = "none";
-    }
-  });
-  searchResult.innerHTML = `${epCount} of ${allEpisodes.length} available show`;
+  // let allEpisode = document.querySelectorAll("#container div");
+  // allEpisode.forEach((episode) => {
+  //   if (episode.innerHTML.toLowerCase().includes(searchInput.toLowerCase())) {
+  //     episode.style.display = "block";
+  //     epCount++;
+  //   } else {
+  //     episode.style.display = "none";
+  //   }
+  // });
+const filterListOfEpisode = allEpisodes.filter(( episode) =>{
+   return episode.name.toLowerCase().includes(searchInput.toLowerCase());
+  
+});
+
+
+
+  makePageForEpisodes(filterListOfEpisode);
+  
+
+
+  searchResult.innerHTML = `${filterListOfEpisode.length} of ${allEpisodes.length} available show`;
 });
 
 function selectDropDown(episodes) {
@@ -131,19 +143,38 @@ function selectDropDown(episodes) {
     option.text = episode.name;
     dropDown.appendChild(option);
   });
-}
+}dd
 
 function selectShows(shows) {
   let dropDown = document.getElementById("listShows");
+  dropDown.addEventListener("change", (event) => {
+    const selectedShowId = event.target.value;
+
+    console.log("dropDown", event , selectedShowId);
+    fetchEpisodes(selectedShowId);
+  });
+
   dropDown.innerHTML = "";
   shows.forEach((show) => {
     const option = document.createElement("option");
-    option.value = show.name;
+    option.value = show.id;
     option.text = show.name;
     dropDown.appendChild(option);
   });
 }
+
+
+
+function displayAllShows(arr){
+  document.getElementById("root").innerHTML = "";
+arr.forEach((element) =>{
+  displayAllShows(element);
+});
+}
 //level 400 add a show selector
+
+//!!!1next time display the episode we just fetch
+
 
 window.onload = fetchEpisodes ( );
 window.onload = fetchShows();
