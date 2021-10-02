@@ -1,6 +1,6 @@
 //You can edit ALL of the code here
-// Gloval variable
-// let dropDown = document.getElementById("listEpisodes");
+// Global variable
+ let dropDown = document.getElementById("listEpisode");
 
 const rootElem = document.getElementById("root");
 
@@ -135,7 +135,7 @@ const filterListOfEpisode = allEpisodes.filter(( episode) =>{
 });
 
 function selectDropDown(episodes) {
-  let dropDown = document.getElementById("listEpisode");
+  // let dropDown = document.getElementById("listEpisode");
   dropDown.innerHTML = "";
   episodes.forEach((episode) => {
     const option = document.createElement("option");
@@ -143,7 +143,7 @@ function selectDropDown(episodes) {
     option.text = episode.name;
     dropDown.appendChild(option);
   });
-}dd
+}
 
 function selectShows(shows) {
   let dropDown = document.getElementById("listShows");
@@ -174,6 +174,18 @@ arr.forEach((element) =>{
 //level 400 add a show selector
 
 //!!!1next time display the episode we just fetch
+ let  displaySelectEpisode = document.getElementById("listEpisode");
+ console.log(displaySelectEpisode);
+console.log(dropDown);
+dropDown.addEventListener("onchange",() => {
+
+let selectedValue = dropDown.value;
+const filterValue = allEpisodes.filter((show)=> {
+  return show.name.includes(selectedValue);
+});
+makePageForEpisodes(filterValue);
+
+})
 
 
 window.onload = fetchEpisodes ( );
