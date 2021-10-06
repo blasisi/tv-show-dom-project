@@ -1,83 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TV Show Project | Bimbola Lasisi</title>
-    <link href="style.css" rel="stylesheet" />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
 
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TV Show Project | Bimbola Lasisi</title>
+  <link href="style.css" rel="stylesheet" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
 
- 
-  <body>
+</head>
 
-    <header>
-      <!-- <section> -->
-        <div class ="logo">
-            <img class="logo" src="logo/logo.png" alt ="logo"/>
 
-        </div>
-        <h1> Tv Show Project </h1>
-        <input
-      
-            type="text"
-            id="searchInput"
-            title="input search"
-            placeholder="Search for episode">    
+<body>
 
-      <!-- </section> -->
-          </header>
-         
-      <!-- search Input -->
+  <header>
+    <!-- <section> -->
+    <div class="logo">
+      <img class="logo" src="logo/logo.png" alt="logo" />
+
     </div>
-   
+    <h1> Tv Show Project </h1>
+    <input type="text" id="searchInput" title="input search" placeholder="Search for episode">
 
-    <div id="searcResult"></div>
-    <br >
-    <!-- getEpisode-->
-    <label id="select">
+    <!-- </section> -->
+  </header>
+
+  <!-- search Input -->
+  </div>
+
+
+  <div id="searcResult"></div>
+  <br>
+  <!-- getEpisode-->
+  <div id="ep-section">
+
+    <label id="selectEp">
       Choose an Episode:
       <select id="listEpisode" name="listed-episode">
         <!-- option  -->
         <option value="text">Select a Episode</option>
       </select>
     </label>
-    <br >
-  <br>
-    <!-- get shows-->
-    <label id="select">
+    <br>
+    <br>
+  </div>
+
+  <!-- get shows-->
+  <div id="show-section">
+    <label id="selectShow">
       Choose a show:
       <select id="listShows" name="listed-shows">
         <!-- option  -->
         <option value="text">Select a shows</option>
       </select>
     </label>
-<br>
-<br>
-    <div id="root"></div>
-    <div id="container"></div>
+    <br>
+    <br>
+    <div id="show-cards">
+  <div class="show-card">
+    <h2> Quids Games</h2>
+    <div class="show-summary">Summary</div>
+    <img src="http://static.tvmaze.com/uploads/images/medium_portrait/9/22757.jpg"/>
+    <div class="genreElement">Genres </div>
+    <div class="status">Status </div>
+    <div class="runtime">Runtime </div>
+    <div class="rating">Rating </div>
 
-    <div id="footer">
-        The data for this project were taken from
-        <a href="https://www.tvmaze.com/api#licensing">TVMaze.com</a>
-      </footer>
-
+  </div>
+  
     </div>
-      </p>
-    </div>
+  </div>
+  <div id="root"></div>
+  <div id="container"></div>
 
-    <!-- Loads a provided function called getALLshows() which returns all shows -->
-    <script src="shows.js"></script>
+  <div id="footer">
+    The data for this project were taken from
+    <a href="https://www.tvmaze.com/api#licensing">TVMaze.com</a>
+    </footer>
 
-    <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
-    <script src="episodes.js"></script>
+  </div>
+  </p>
+  </div>
 
-    <!-- Loads YOUR javascript code -->
-    <script src="script.js"></script>
-    
-    <script> console.dir(document);
-    </script>
-  </body>
+  <!-- Loads a provided function called getALLshows() which returns all shows -->
+  <script src="shows.js"></script>
+
+  <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
+  <script src="episodes.js"></script>
+
+  <!-- Loads YOUR javascript code -->
+  <script src="script.js"></script>
+
+  <script> console.dir(document);
+  </script>
+</body>
+
 </html>

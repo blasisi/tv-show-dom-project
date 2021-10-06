@@ -1,29 +1,28 @@
 //You can edit ALL of the code here
 // Global variable
- let dropDown = document.getElementById("listEpisode");
+let dropDown = document.getElementById("listEpisode");
 
 const rootElem = document.getElementById("root");
 
 const container = document.getElementById("container");
 let searchInput = document.getElementById("searchInput");
 let searchResult = document.getElementById("searcResult");
-const selectShowTag =document.getElementById("selectShow");
+const selectShowTag = document.getElementById("selectShow");
+
 let epCount = 0;
 let allEpisodes = [];
 let allShows = getAllShows();
 
 // add a  new drop for list of shows
-// fill it with the dATTA THAT COME FORM GET ALL SHOWS 
+// fill it with the dATTA THAT COME FORM GET ALL SHOWS
 // let allShow = getShow();
 
 const apiEps = "https://api.tvmaze.com/shows/82/episodes";
 
-
-function fetchEpisodes(showID =82) {
-
+function fetchEpisodes(showID = 82) {
   fetch(`https://api.tvmaze.com/shows/${showID}/episodes`)
     .then((response) => response.json())
-      
+
     .then((episode) => {
       allEpisodes = episode;
       setup();
@@ -31,23 +30,20 @@ function fetchEpisodes(showID =82) {
 }
 
 function fetchShows() {
-
   fetch(" https://api.tvmaze.com/shows")
     .then((response) => response.json())
-      
+
     .then((shows) => {
       allShows = shows;
-      selectShows(allShows);
-    })
-    
+      createShowsDropdown(allShows);
+      createShowCards(shows);
+    });
 }
-
-
 
 // fetchData(apiUrl);
 
 function setup() {
-  allEpisodes = getAllEpisodes();
+  // allEpisodes = getAllEpisodes();
   makePageForEpisodes(allEpisodes);
   selectDropDown(allEpisodes);
 }
@@ -90,7 +86,6 @@ function makePageForEpisodes(episodeList) {
 
     // Your page should state somewhere that the data has (originally) come from TVMaze.com, and link back to that site (or the specific episode on that site). See tvmaze.com/api#licensing.
   });
-  
 }
 
 function search(input) {
@@ -120,16 +115,11 @@ searchInput.addEventListener("input", (event) => {
   //     episode.style.display = "none";
   //   }
   // });
-const filterListOfEpisode = allEpisodes.filter(( episode) =>{
-   return episode.name.toLowerCase().includes(searchInput.toLowerCase());
-  
-});
-
-
+  const filterListOfEpisode = allEpisodes.filter((episode) => {
+    return episode.name.toLowerCase().includes(searchInput.toLowerCase());
+  });
 
   makePageForEpisodes(filterListOfEpisode);
-  
-
 
   searchResult.innerHTML = `${filterListOfEpisode.length} of ${allEpisodes.length} available show`;
 });
@@ -140,17 +130,19 @@ function selectDropDown(episodes) {
   episodes.forEach((episode) => {
     const option = document.createElement("option");
     option.value = episode.name;
-    option.text = episode.name;
+    option.text = ` S${(episode.season + "").padStart(2, "0")}  E${(
+      episode.number + ""
+    ).padStart(2, "0")} ${episode.name}`;
     dropDown.appendChild(option);
   });
 }
 
-function selectShows(shows) {
+function createShowsDropdown(shows) {
   let dropDown = document.getElementById("listShows");
   dropDown.addEventListener("change", (event) => {
     const selectedShowId = event.target.value;
 
-    console.log("dropDown", event , selectedShowId);
+    console.log("dropDown", event, selectedShowId);
     fetchEpisodes(selectedShowId);
   });
 
@@ -163,31 +155,42 @@ function selectShows(shows) {
   });
 }
 
+function createShowCards(shows) {
+  let cardsContainer = document.getElementById("show-cards");
+  cardsContainer.innerHTML = shows.map((show) => {
+    return `<div class="show-card">
+  <h2> ${show.name}</h2>
+  <div class="show-summary"> ${show.summary}</div>
+  <img src=" ${show.image.medium}"/>
+  <div class="genreElement">${show.genres} </div>
+  <div class="status">${show.status} </div>
+  <div class="runtime">${show.runtime} </div>
+  <div class="rating"> ${show.rating.avarage} </div>
+  
 
 
-function displayAllShows(arr){
-  document.getElementById("root").innerHTML = "";
-arr.forEach((element) =>{
-  displayAllShows(element);
-});
+</div>`;
+  });
 }
-//level 400 add a show selector
+
+function displayAllShows(arr) {
+  document.getElementById("root").innerHTML = "";
+  arr.forEach((element) => {
+    displayAllShows(element);
+  });
+}
 
 //!!!1next time display the episode we just fetch
- let  displaySelectEpisode = document.getElementById("listEpisode");
- console.log(displaySelectEpisode);
+let displaySelectEpisode = document.getElementById("listEpisode");
+console.log(displaySelectEpisode);
 console.log(dropDown);
-dropDown.addEventListener("onchange",() => {
-
-let selectedValue = dropDown.value;
-const filterValue = allEpisodes.filter((show)=> {
-  return show.name.includes(selectedValue);
+dropDown.addEventListener("onchange", () => {
+  let selectedValue = dropDown.value;
+  const filterValue = allEpisodes.filter((show) => {
+    return show.name.includes(selectedValue);
+  });
+  makePageForEpisodes(filterValue);
 });
-makePageForEpisodes(filterValue);
 
-})
-
-
-window.onload = fetchEpisodes ( );
+// window.onload = fetchEpisodes ( );
 window.onload = fetchShows();
-
